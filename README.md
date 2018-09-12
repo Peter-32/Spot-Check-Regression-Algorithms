@@ -1,16 +1,4 @@
-# ten_regression
-
-_
-
-### Prerequisites
-
-_
-
-### Installing
-
-_
-
-### Goal
+# Ten Regression
 
 Quickly find a good regression model.
 
