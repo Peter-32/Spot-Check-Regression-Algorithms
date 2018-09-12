@@ -7,7 +7,7 @@ Quickly find a good regression model.
 - Define the Problem
   - X Define the goal
   - X List the data sources
-  - List the data descriptions
+  - X List the data descriptions
   - Find missing values
   - Find infinity values
   - Identify which column is the target
