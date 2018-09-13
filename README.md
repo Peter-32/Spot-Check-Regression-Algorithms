@@ -1,4 +1,4 @@
-# Ten Regression
+# Spot Check Regression Algorithms
 
 One function that tries several models and outputs the best MSE cross-validation score.
 
@@ -21,11 +21,11 @@ One function that tries several models and outputs the best MSE cross-validation
   - X Get baseline MSE  
 - Improve Results
   - X Find the CV code to use
-  - Try CV on Linear Regression
-  - Try CV on 9 other regression models
-  - Function: Run all 10 and identify the best model
-  - Function: Change the parameters of that model at least 10 times and identify the best model
-  - Output a plot of the results of all models compared to baseline
+  - X Try CV on Linear Regression
+  - X Try CV on 9 other regression models
+  - X Function: Run all 10 and identify the best model
+  - X Function: Change the parameters of that model at least 10 times and identify the best model
+  - X Output a plot of the results of all models compared to baseline
 - Present Results
   - Write an Confluence document:
     - understandable, basic, in isolation, and plots
