@@ -55,9 +55,9 @@ housingdata: https://www.kaggle.com/apratim87/housingdata
 - LSTAT % lower status of the population
 - MEDV Median value of owner-occupied homes in $1000's **This is the target y**
 
-### Confluence Document
+### Blog Post
 
-Link:
+[Spot Check Regression Algorithms|http://data-in-model-out.com/spot-check-regression-algorithms/]
 
 ### Other Images
 
