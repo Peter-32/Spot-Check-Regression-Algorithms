@@ -57,7 +57,7 @@ housingdata: https://www.kaggle.com/apratim87/housingdata
 
 ### Blog Post
 
-[Spot Check Regression Algorithms|http://data-in-model-out.com/spot-check-regression-algorithms/]
+[Spot Check Regression Algorithms](http://data-in-model-out.com/spot-check-regression-algorithms/)
 
 ### Other Images
 
