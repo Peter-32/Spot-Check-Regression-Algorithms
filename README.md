@@ -2,9 +2,6 @@
 
 One function that tries several models and outputs the best MSE cross-validation score.
 
-![Spot Checking](1.png)
-![Feature Importance](2.png)
-
 ### Steps
 
 - Define the Problem
@@ -59,3 +56,8 @@ housingdata: https://www.kaggle.com/apratim87/housingdata
 ### Confluence Document
 
 Link:
+
+### Images
+
+![Spot Checking](1.png)
+![Feature Importance](2.png)
