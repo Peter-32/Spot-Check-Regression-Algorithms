@@ -60,4 +60,5 @@ Link:
 ### Images
 
 ![Spot Checking](1.png)
+![Models](models.png)
 ![Feature Importance](2.png)
