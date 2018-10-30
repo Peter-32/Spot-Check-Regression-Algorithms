@@ -44,41 +44,41 @@ models = []
 models.append(("LR",LinearRegression()))
 alpha = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 for a in alpha:
-  models.append("Lasso-"+str(a),Lasso(alpha=a))
-  models.append("Ridge-"+str(a),Ridge(alpha=a))
+  models.append(("Lasso-"+str(a),Lasso(alpha=a)))
+  models.append(("Ridge-"+str(a),Ridge(alpha=a)))
 for a1 in alpha:
   for a2 in alpha:
-	  models.append("EN-" + str(a1) + '-' + str(a2),ElasticNet(a1, a2))
-models.append("Huber", HuberRegressor())
-models.append("Lars", Lars())
-models.append("LassoLars", LassoLars())
-models.append("PA", PassiveAggressiveRegressor(max_iter=1000, tol=1e-3))
-models.append("Ranscac", RANSACRegressor())
-models.append("SGD", SGDRegressor(max_iter=1000, tol=1e-3))
-models.append("Theil", TheilSenRegressor())
+	  models.append(("EN-" + str(a1) + '-' + str(a2),ElasticNet(a1, a2)))
+models.append(("Huber", HuberRegressor()))
+models.append(("Lars", Lars()))
+models.append(("LassoLars", LassoLars()))
+models.append(("PA", PassiveAggressiveRegressor(max_iter=1000, tol=1e-3)))
+models.append(("Ranscac", RANSACRegressor()))
+models.append(("SGD", SGDRegressor(max_iter=1000, tol=1e-3)))
+models.append(("Theil", TheilSenRegressor()))
 # Nonlinear
 for k in range(1, 21):
-    models.append("KNN-"+str(k), KNeighborsRegressor(n_neighbors=k))
-models.append("DT", DecisionTreeRegressor())
-models.append("ExtraTree", ExtraTreeRegressor())
-models.append("SVMLin", SVR(kernel='linear'))
-models.append("SVMPoly", SVR(kernel='poly'))
-models.append("SVRRbf", SVR(kernel='rbf'))
-models.append("SVRSig", SVR(kernel='sigmoid'))
+    models.append(("KNN-"+str(k), KNeighborsRegressor(n_neighbors=k)))
+models.append(("DT", DecisionTreeRegressor()))
+models.append(("ExtraTree", ExtraTreeRegressor()))
+models.append(("SVMLin", SVR(kernel='linear')))
+models.append(("SVMPoly", SVR(kernel='poly')))
+models.append(("SVRRbf", SVR(kernel='rbf')))
+models.append(("SVRSig", SVR(kernel='sigmoid')))
 for c in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
-  models['SVR-'+str(c)] = SVR(C=c)
+    models.append(("SVR-"+str(c), SVR(C=c)))
 bag_models = []
 # Bagging
 for name, model in models:
-    bag_models.append(("Bagging" + name,BaggingRegressor(model,max_samples=0.5, max_features=0.5)))
+    bag_models.append(("Bagging" + name, BaggingRegressor(model,max_samples=0.5, max_features=0.5)))
 models = models + bag_models
 # Ensembles
 n_trees = 100
-models['AdaBoost'] = AdaBoostRegressor(n_estimators=n_trees)
-models['Bag'] = BaggingRegressor(n_estimators=n_trees)
-models['RF'] = RandomForestRegressor(n_estimators=n_trees)
-models['ExtraTrees'] = ExtraTreesRegressor(n_estimators=n_trees)
-models['GBM'] = GradientBoostingRegressor(n_estimators=n_trees)
+models.append(('AdaBoost', AdaBoostRegressor(n_estimators=n_trees)))
+models.append(("Bag", BaggingRegressor(n_estimators=n_trees)))
+models.append(("RF", RandomForestRegressor(n_estimators=n_trees)))
+models.append(("ExtraTrees", ExtraTreesRegressor(n_estimators=n_trees)))
+models.append(("GBM", GradientBoostingRegressor(n_estimators=n_trees)))
 
 names, mses = [], []
 for name, model in models:
