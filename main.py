@@ -53,9 +53,7 @@ models.append(("Huber", HuberRegressor()))
 models.append(("Lars", Lars()))
 models.append(("LassoLars", LassoLars()))
 models.append(("PA", PassiveAggressiveRegressor(max_iter=1000, tol=1e-3)))
-models.append(("Ranscac", RANSACRegressor()))
 models.append(("SGD", SGDRegressor(max_iter=1000, tol=1e-3)))
-models.append(("Theil", TheilSenRegressor()))
 # Nonlinear
 for k in range(1, 21):
     models.append(("KNN-"+str(k), KNeighborsRegressor(n_neighbors=k)))
@@ -69,9 +67,12 @@ for c in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
     models.append(("SVR-"+str(c), SVR(C=c)))
 bag_models = []
 # Bagging
-for name, model in models:
-    bag_models.append(("Bagging" + name, BaggingRegressor(model,max_samples=0.5, max_features=0.5)))
+# for name, model in models:
+#     bag_models.append(("Bagging" + name, BaggingRegressor(model,max_samples=0.5, max_features=0.5)))
 models = models + bag_models
+# Linear
+models.append(("Ranscac", RANSACRegressor()))
+models.append(("Theil", TheilSenRegressor()))
 # Ensembles
 n_trees = 100
 models.append(('AdaBoost', AdaBoostRegressor(n_estimators=n_trees)))
@@ -81,11 +82,28 @@ models.append(("ExtraTrees", ExtraTreesRegressor(n_estimators=n_trees)))
 models.append(("GBM", GradientBoostingRegressor(n_estimators=n_trees)))
 
 names, mses = [], []
+results = []
 for name, model in models:
+    print("name: " + name)
+    # try:
+    #     with catch_warnings():
+    #         filterwarnings("ignore")
     cv_mse = cross_val_score(model, X, y, cv = KFold(n_splits=5, random_state=22), scoring='neg_mean_squared_error')
     names.append(name), mses.append(-1*cv_mse.mean())
-models_df = DataFrame({'name': names, 'mse': mses}).sort_values(by=['mse']).iloc[0:]
-ax = sns.barplot(x="name", y="mse", data=models_df)
-ax.set_xticklabels(models_df['name'], rotation=75, fontdict={'fontsize': 12})
-plt.savefig('models.png')
-plt.show()
+    results.append((name,-1*cv_mse.mean()))
+    # except:
+    #     pass
+
+results.sort(key=lambda tup: tup[1])
+
+for name, error in results[:5]:
+    print(name, error)
+
+
+
+# models_df = DataFrame({'name': names, 'mse': mses}).sort_values(by=['mse']).iloc[0:]
+
+# ax = sns.barplot(x="name", y="mse", data=models_df)
+# ax.set_xticklabels(models_df['name'], rotation=75, fontdict={'fontsize': 12})
+# plt.savefig('models.png')
+# plt.show()
